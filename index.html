@@ -3,55 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Download Center</title>
+    <title>Redirecting...</title>
     <style>
-        :root { --primary: #007bff; --bg: #e9ecef; }
-        body { font-family: sans-serif; background: var(--bg); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 450px; }
-        .file-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; font-size: 14px; }
-        .btn { background: #28a745; color: white; padding: 15px; border-radius: 8px; text-decoration: none; display: block; font-weight: bold; font-size: 18px; border: none; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn:disabled { background: #6c757d; cursor: not-allowed; }
-        #timer { font-size: 14px; color: #666; margin-top: 10px; }
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background: #111; 
+            color: white; 
+        }
+        .loader {
+            border: 4px solid #333;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .container { text-align: center; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Ready to Download</h1>
-    <div class="file-box">
-        <strong>File Name:</strong> Final_Project_Update.zip<br>
-        <strong>Size:</strong> 14.2 MB
-    </div>
-
-    <button id="downloadBtn" class="btn" disabled>Please Wait...</button>
-    <p id="timer">Link will be ready in <span id="count">3</span> seconds.</p>
-
-    <p style="font-size: 10px; color: #999; margin-top: 20px;">
-        Note: Disable Adblock for smooth download process.
-    </p>
+<div class="container">
+    <div class="loader" style="margin: auto;"></div>
+    <h2>Menghubungkan ke Server...</h2>
+    <p>Mohon tunggu sebentar, Anda akan segera dialihkan.</p>
 </div>
 
 <script>
+    // Link Smartlink Advertica Kamu
     const adLink = "https://data527.click/4ca134139a93bbe17504/5152cb4e38/?placementName=default";
-    const btn = document.getElementById('downloadBtn');
-    const countSpan = document.getElementById('count');
-    let timeLeft = 3;
 
-    const timer = setInterval(() => {
-        timeLeft--;
-        countSpan.textContent = timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            btn.disabled = false;
-            btn.textContent = "Download Now";
-            document.getElementById('timer').innerHTML = "Your link is ready!";
-        }
-    }, 1000);
-
-    btn.addEventListener('click', () => {
-        window.open(adLink, '_blank');
-        btn.textContent = "Processing...";
-    });
+    // Fungsi otomatis berjalan saat halaman dimuat
+    window.onload = function() {
+        // Beri delay sedikit (2 detik) supaya terlihat natural seperti loading server
+        setTimeout(function() {
+            window.location.href = adLink;
+        }, 2000);
+    };
 </script>
 
 </body>
